@@ -1,0 +1,313 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+        xmlns:h="http://helix-toolkit.org/wpf"
+            xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" 
+
+    
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" xmlns:dxm="http://schemas.devexpress.com/winfx/2008/xaml/map" x:Class="WpfApp2.MainWindow"
+        mc:Ignorable="d"
+        Title="grizu - 263 | Space Team  'Ground Station" Height="716.489" Width="1365.362">
+    <Grid Margin="-3,0,3,0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF10193A" Offset="0.486"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <HelixToolkit:HelixViewport3D ZoomExtentsWhenLoaded="True"  x:Name="myView" Margin="1094,0,0,478">
+            <ModelVisual3D x:Name="model">
+                <ModelVisual3D.Transform>
+                    <RotateTransform3D>
+                        <RotateTransform3D.Rotation>
+                            <AxisAngleRotation3D x:Name = "rotate" Axis = "0 1 0"/>
+                        </RotateTransform3D.Rotation>
+                    </RotateTransform3D>
+                </ModelVisual3D.Transform>
+            </ModelVisual3D>
+            <HelixToolkit:SunLight/>
+        </HelixToolkit:HelixViewport3D>
+
+
+
+        <Button x:Name="btn_Start" Content="Start" HorizontalAlignment="Left" Height="32" Margin="974,4,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="0.103,-7.941" BorderBrush="White" Background="#FF460A0A" Foreground="#FF2FA9D6" FontSize="16" Click="Btn_Start_Click"/>
+        <Button x:Name="btn_Stop" Content="Stop" HorizontalAlignment="Left" Height="32" Margin="974,44,0,0" VerticalAlignment="Top" Width="86" RenderTransformOrigin="0.103,-7.941" BorderBrush="White" Background="#FF460A0A" Foreground="#FF2FA9D6" FontSize="16" Click="Btn_Stop_Click"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="974,0,0,588" Background="#FF8ECFC9" Width="233" RenderTransformOrigin="0.5,0.5" Height="6" VerticalAlignment="Bottom">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.707"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+
+
+        <Grid Background="#FFB5F1DB" x:Name="Grid_Ust2" ShowGridLines="true" Margin="3,3,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="935" Height="108" VerticalAlignment="Top" >
+            <Label Content="Team ID :" HorizontalAlignment="Left" Margin="24,60,0,0" VerticalAlignment="Top" Width="106" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <Label x:Name="lblTeam" Content="00" HorizontalAlignment="Left" Margin="130,58,0,0" VerticalAlignment="Top" Width="70" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <Label Content="Mission Time :" HorizontalAlignment="Left" Margin="699,60,0,0" VerticalAlignment="Top" Width="154" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <Label x:Name="lblMissiontime" Content="00" HorizontalAlignment="Left" Margin="855,58,0,0" VerticalAlignment="Top" Width="70" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <Label Content="Packet Count :" HorizontalAlignment="Left" Margin="439,60,0,0" VerticalAlignment="Top" Width="154" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <Label x:Name="lblPacketcount" Content="00" HorizontalAlignment="Left" Margin="595,58,0,0" VerticalAlignment="Top" Width="70" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <Label Content="GPS Sats:" HorizontalAlignment="Left" Margin="223,60,0,0" VerticalAlignment="Top" Width="154" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <Label x:Name="lblSats" Content="00" HorizontalAlignment="Left" Margin="331,58,0,0" VerticalAlignment="Top" Width="70" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A" RenderTransformOrigin="-0.071,0.446"/>
+            <ComboBox x:Name="combobox_Ports" HorizontalAlignment="Left" Margin="84,17,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF4B1D1D" Height="32" FontSize="18"/>
+            <Label Content="Ports : " HorizontalAlignment="Left" Margin="6,16,0,0" VerticalAlignment="Top" Width="106" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <ComboBox x:Name="combobox_Baudrate" HorizontalAlignment="Left" Margin="345,17,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF4B1D1D" Height="32" FontSize="18"/>
+            <Label Content="Baudrate :" HorizontalAlignment="Left" Margin="234,16,0,0" VerticalAlignment="Top" Width="106" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <ComboBox x:Name="combobox_Databits" HorizontalAlignment="Left" Margin="598,17,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF4B1D1D" Height="32" FontSize="18"/>
+            <Label Content="Data Bits :" HorizontalAlignment="Left" Margin="492,16,0,0" VerticalAlignment="Top" Width="106" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+            <ComboBox x:Name="combobox_Parity" HorizontalAlignment="Left" Margin="814,17,0,0" VerticalAlignment="Top" Width="102" Foreground="#FF4B1D1D" Height="32" FontSize="18"/>
+            <Label Content="Parity :" HorizontalAlignment="Left" Margin="738,16,0,0" VerticalAlignment="Top" Width="106" Background="{x:Null}" FontSize="22" FontFamily="Constantia" Foreground="#FF5B0A0A"/>
+        </Grid>
+
+        <Label Content="" HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" Background="#FF8ECFC9" Height="6" Width="1090" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.227"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button x:Name="btn_Charts" Content="Charts" HorizontalAlignment="Left" Height="41" Margin="240,152,0,0" VerticalAlignment="Top" Width="190" RenderTransformOrigin="0.103,-7.941" BorderBrush="White" Background="#FF460A0A" Foreground="#FF2FA9D6" FontSize="16" Click="Btn_Charts_Click"/>
+        <Button x:Name="btn_GPS" Content="GPS" HorizontalAlignment="Left" Height="41" Margin="429,152,0,0" VerticalAlignment="Top" Width="190" RenderTransformOrigin="0.103,-7.941" BorderBrush="White" Background="#FF460A0A" Foreground="#FF2FA9D6" FontSize="16" Click="Btn_GPS_Click"/>
+        <Button x:Name="btn_ListView" Content="List View" HorizontalAlignment="Left" Height="41" Margin="618,152,0,0" VerticalAlignment="Top" Width="190" RenderTransformOrigin="0.103,-7.941" BorderBrush="White" Background="#FF460A0A" Foreground="#FF2FA9D6" FontSize="16" Click="Btn_ListView_Click"/>
+        <Grid Background="#FFB5F1DB" x:Name="Grid_Charts" ShowGridLines="true" Margin="5,242,0,5" HorizontalAlignment="Left" Width="1151" >
+            <dxc:ChartControl HorizontalAlignment="Left" Margin="4,10,0,0" Width="376" Height="214" VerticalAlignment="Top">
+                <dxc:ChartControl.Legends>
+                    <dxc:Legend HorizontalPosition="Center" VerticalPosition="TopOutside"/>
+                </dxc:ChartControl.Legends>
+                <dxc:XYDiagram2D>
+                    <dxc:LineSeries2D x:Name="veri_Altitude" DisplayName="Altitude (m)">
+                        <dxc:SeriesPoint Argument="0" Value="0"/>
+                    </dxc:LineSeries2D>
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl>
+            <dxc:ChartControl HorizontalAlignment="Left" Margin="385,10,0,0" Width="376" Height="214" VerticalAlignment="Top">
+                <dxc:ChartControl.Legends>
+                    <dxc:Legend HorizontalPosition="Center" VerticalPosition="TopOutside"/>
+                </dxc:ChartControl.Legends>
+                <dxc:XYDiagram2D>
+                    <dxc:LineSeries2D x:Name="veri_Temperature" DisplayName="Temperature (°C)">
+                        <dxc:SeriesPoint Argument="0" Value="0"/>
+                    </dxc:LineSeries2D>
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl>
+            <dxc:ChartControl Margin="766,10,0,0" HorizontalAlignment="Left" Width="376" Height="214" VerticalAlignment="Top">
+                <dxc:ChartControl.Legends>
+                    <dxc:Legend HorizontalPosition="Center" VerticalPosition="TopOutside"/>
+                </dxc:ChartControl.Legends>
+                <dxc:XYDiagram2D>
+                    <dxc:LineSeries2D x:Name="veri_Pressure" DisplayName="Pressure (Pa)">
+                        <dxc:SeriesPoint Argument="0" Value="0"/>
+                    </dxc:LineSeries2D>
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl>
+            <dxc:ChartControl HorizontalAlignment="Left" Margin="4,232,0,0" Width="376" Height="214" VerticalAlignment="Top">
+                <dxc:ChartControl.Legends>
+                    <dxc:Legend VerticalPosition="TopOutside" HorizontalPosition="Center"/>
+                </dxc:ChartControl.Legends>
+                <dxc:XYDiagram2D>
+                    <dxc:LineSeries2D x:Name="veri_Voltage" DisplayName="Voltage (V)">
+                        <dxc:SeriesPoint Argument="0" Value="0"/>
+                    </dxc:LineSeries2D>
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl>
+            <dxc:ChartControl HorizontalAlignment="Left" Margin="385,232,0,0" Width="376" Height="214" VerticalAlignment="Top">
+                <dxc:ChartControl.Legends>
+                    <dxc:Legend HorizontalPosition="Center" VerticalPosition="TopOutside"/>
+                </dxc:ChartControl.Legends>
+                <dxc:XYDiagram2D>
+                    <dxc:LineSeries2D x:Name="veri_BladeSpinRate" DisplayName="Blade Spin Rate (RPM)">
+                        <dxc:SeriesPoint Argument="0" Value="0"/>
+                    </dxc:LineSeries2D>
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl>
+            <dxc:ChartControl HorizontalAlignment="Left" Margin="766,232,0,0" Width="376" Height="214" VerticalAlignment="Top">
+                <dxc:ChartControl.Legends>
+                    <dxc:Legend HorizontalPosition="Center" VerticalPosition="TopOutside"/>
+                </dxc:ChartControl.Legends>
+                <dxc:XYDiagram2D>
+                    <dxc:LineSeries2D x:Name="veri_BonusDirection" DisplayName="Bonus Direction ( ° )">
+                        <dxc:SeriesPoint Argument="0" Value="0"/>
+                    </dxc:LineSeries2D>
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl>
+        </Grid>
+        <Label Content="" Margin="919,479,-49,0" Background="#FF8ECFC9" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1" Height="6" VerticalAlignment="Top">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.92"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Image Margin="0,207,14,327" Source="grizulogo.png" Stretch="Fill" HorizontalAlignment="Right" Width="161"/>
+        <Label Content="#6160" Margin="0,0,4,307" FontSize="36" Foreground="#FFFF9900" HorizontalAlignment="Right" Width="187" Height="53" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+        <Label Content="" Margin="1163,0,-7,300" Background="#FF8ECFC9" RenderTransformOrigin="0.5,0.5" Height="6" VerticalAlignment="Bottom">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.227"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Software State" Margin="0,0,0,255.419" FontSize="24" Foreground="#FFF5FF1F" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FFF07E30" Padding="0,1,0,3" BorderThickness="0,2" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" Height="41.583" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="193.333"/>
+        <ListView x:Name="listview1"    Margin="5,242,0,0" HorizontalAlignment="Left" Width="1151" Height="438" VerticalAlignment="Top" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Team ID"
+				    DisplayMemberBinding="{Binding TeamID}"
+				    Width="70"/>
+                    <GridViewColumn Header="Mission Time"
+				    DisplayMemberBinding="{Binding MissionTime}"
+				    Width="75"/>
+                    <GridViewColumn Header="Packet Count"
+				    DisplayMemberBinding="{Binding PacketCount}"
+				    Width="75"/>
+                    <GridViewColumn Header="Altitude"
+				    DisplayMemberBinding="{Binding Altitude}"
+				    Width="55"/>
+                    <GridViewColumn Header="Pressure"
+				    DisplayMemberBinding="{Binding Pressure}"
+				    Width="55"/>
+                    <GridViewColumn Header="Temp"
+				    DisplayMemberBinding="{Binding Temp}"
+				    Width="45"/>
+                    <GridViewColumn Header="Voltage"
+				    DisplayMemberBinding="{Binding Voltage}"
+				    Width="55"/>
+                    <GridViewColumn Header="GPS Time"
+				    DisplayMemberBinding="{Binding GPSTime}"
+				    Width="66"/>
+                    <GridViewColumn Header="GPS Latitude"
+				    DisplayMemberBinding="{Binding GPSLatitude}"
+				    Width="80"/>
+                    <GridViewColumn Header="GPS Longitude"
+				    DisplayMemberBinding="{Binding GPSLongitude}"
+				    Width="83"/>
+                    <GridViewColumn Header="GPS Altitude"
+				    DisplayMemberBinding="{Binding GPSAltitude}"
+				    Width="80"/>
+                    <GridViewColumn Header="GPS Sats"
+				    DisplayMemberBinding="{Binding GPSSats}"
+				    Width="61"/>
+                    <GridViewColumn Header= "Pitch"
+				    DisplayMemberBinding="{Binding Pitch}"
+				    Width="41"/>
+                    <GridViewColumn Header="Roll"
+				    DisplayMemberBinding="{Binding Roll}"
+				    Width="41"/>
+                    <GridViewColumn Header="Blade Spin Rate"
+				    DisplayMemberBinding="{Binding BladeSpinRate}"
+				    Width="94"/>
+                    <GridViewColumn Header="Software State"
+				    DisplayMemberBinding="{Binding SoftwareState}"
+				    Width="83"/>
+                    <GridViewColumn Header="Bonus Direction"
+				    DisplayMemberBinding="{Binding BonusDirection}"
+				    Width="87"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <!--   <dxm:MapControl Name="GPS_Maps" ZoomLevel="4" Margin="5,242,0,0" Height="438" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1151">
+            <dxm:ImageLayer  >
+                <dxm:BingMapDataProvider BingKey="ArhW7TAgiiFGxtovmFpcI278GmU932w1vXLe6L4mN7F-QV4FckrTdQhJMVwcEzXy"/>
+            </dxm:ImageLayer>
+        </dxm:MapControl>
+-->
+        <gmaps:GMapControl Name="offlineMAP" HorizontalAlignment="Left" Height="433" Margin="10,242,0,0" VerticalAlignment="Top" Width="1146"/>
+        <Label x:Name="State1" Content="" Margin="0,0,0,35" FontSize="18" Foreground="Black" Background="Red" Height="67" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24"/>
+        <Label Content="Calibrated from to &#xD;&#xA;software and waiting &#xD;&#xA;launch" Margin="1166,0,29,35" FontSize="16" Foreground="#FFE8E8E8" RenderTransformOrigin="0.577,0.519" Background="#FF423A3A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="67" VerticalAlignment="Bottom"/>
+        <Label x:Name="State1_Copy" Content="" Margin="0,0,0,107" FontSize="18" Foreground="Black" Background="Red" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24"/>
+        <Label Content="Rocket launching" Margin="1166,0,29,107" FontSize="16" Foreground="#FFE8E8E8" RenderTransformOrigin="0.577,0.519" Background="#FF423A3A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Bottom"/>
+        <Label x:Name="State1_Copy1" Content="" Margin="0,0,0,139" FontSize="18" Foreground="Black" Background="Red" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24"/>
+        <Label Content="CanSat left rocket" Margin="1166,0,29,139" FontSize="16" Foreground="#FFE8E8E8" RenderTransformOrigin="0.577,0.519" Background="#FF423A3A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Bottom"/>
+        <Label x:Name="State1_Copy2" Content="" Margin="0,0,0,171" FontSize="18" Foreground="Black" Background="Red" Height="49" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24"/>
+        <Label Content="Payload released and&#xD;&#xA;start recording a video" Margin="1166,0,29,171" FontSize="14.5" Foreground="#FFE8E8E8" RenderTransformOrigin="0.5,0.5" Background="#FF423A3A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="49" VerticalAlignment="Bottom"/>
+        <Label x:Name="State1_Copy3" Content="" Margin="0,0,0,225" FontSize="18" Foreground="Black" Background="Red" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24"/>
+        <Label Content="Mission complete" Height="27" Margin="1166,0,29,225" VerticalAlignment="Bottom" FontSize="16" Foreground="#FFE8E8E8" RenderTransformOrigin="0.577,0.519" Background="#FF423A3A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="" Margin="0,0,-8,471" Background="#FF8ECFC9" RenderTransformOrigin="0.5,0.5" Height="6" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="287">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.227"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" Background="#FF8ECFC9" Height="6" Width="1090" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.227"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" Margin="828,172,0,0" VerticalAlignment="Top" Background="#FF8ECFC9" Height="6" Width="262" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.227"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" Margin="799,170,0,0" VerticalAlignment="Top" Background="#FF8ECFC9" Height="6" Width="55" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.707"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" Margin="195,170,0,0" VerticalAlignment="Top" Background="#FF8ECFC9" Height="6" Width="55" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.707"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" Margin="0,172,0,0" VerticalAlignment="Top" Background="#FF8ECFC9" Height="6" Width="222" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.227"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button x:Name="btn_Calibre" Content="Calibrate" HorizontalAlignment="Left" Height="36" Margin="974,81,0,0" VerticalAlignment="Top" Width="86" RenderTransformOrigin="0.103,-7.941" BorderBrush="White" Background="#FF460A0A" Foreground="#FF2FA9D6" FontSize="16" Click="Btn_Charts_Click"/>
+        <Label x:Name="State1_Copy4" Content="" Margin="0,0,0,3" FontSize="18" Foreground="Black" Background="Red" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24"/>
+        <Label Content="Mission start" Margin="1166,0,29,3" FontSize="16" Foreground="#FFE8E8E8" RenderTransformOrigin="0.577,0.519" Background="#FF423A3A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="27" VerticalAlignment="Bottom"/>
+
+
+
+
+    </Grid>
+</Window>
